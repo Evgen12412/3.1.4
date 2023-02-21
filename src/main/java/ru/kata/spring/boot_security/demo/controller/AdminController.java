@@ -31,7 +31,7 @@ public class AdminController {
     @GetMapping
     public String userList(Model model, Principal principal) {
         model.addAttribute("getUser", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        model.addAttribute("principal", userService.findByUserName(principal.getName()).get());
+//        model.addAttribute("principal", userService.findByUserName(principal.getName()).get());
         model.addAttribute("allUsers", userService.allUsers());
         model.addAttribute("allRoles", roleService.allRoles());
         return "index";
@@ -44,19 +44,20 @@ public class AdminController {
     }
 
 
-    @PostMapping("/addNewUser")
-    public String createUser(@ModelAttribute("user") User user) {
-        if (userService.checkLogin(user)) {
-            userService.saveUser(user);
-            return "redirect:/admin";
-        } else {
-            return "/Error";
-        }
-    }
+//    @PostMapping("/addNewUser")
+//    public String createUser(@ModelAttribute("user") User user) {
+//        if (userService.checkLogin(user)) {
+//            userService.saveUser(user);
+//            return "redirect:/admin";
+//        } else {
+//            return "/Error";
+//        }
+//    }
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
+
 }

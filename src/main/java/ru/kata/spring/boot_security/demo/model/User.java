@@ -145,4 +145,16 @@ public class User implements UserDetails {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", username='" + username + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }
